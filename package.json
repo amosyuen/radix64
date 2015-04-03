@@ -1,6 +1,6 @@
 {
   "name": "radix-64",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Fast and efficient number conversion library for arbitrary radix 64 alphabets.",
   "main": "index.js",
   "scripts": {
