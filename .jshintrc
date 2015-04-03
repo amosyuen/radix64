@@ -1,0 +1,28 @@
+{
+  "bitwise": false,
+  "browser": true,
+  "curly": true,
+  "devel": true,
+  "eqeqeq": true,
+  "eqnull": true,
+  "forin": true,
+  "immed": true,
+  "jquery": true,
+  "loopfunc": true,
+  "no new": true,
+  "node": true,
+  "quotmark": true,
+  "strict": true,
+  "trailing": true,
+  "undef": true,
+  "unused": true,
+  "predef": [
+    "exports",
+    "require",
+    "process"
+  ],
+  "globals": {
+    "angular": true,
+    "ExpressError": true
+  }
+}
