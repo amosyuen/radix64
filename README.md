@@ -2,9 +2,12 @@
 ---
 Fast and efficient integer conversion library for arbitrary radix 64 alphabets designed. Allows you to convert any size integer to and from any 64 radix alphabet. Has options to format strings so that they are lexicographically sortable. This library was designed for ID generation.
 
-**Note:** While similar **radix64** is not the same as **base64**. Base64 is for converting binary data and so starts converting from the most significant byte to least. Whereas radix64 is for converting integers from base 10 to base 64 and so starts converting with the least significant byte to most.
+**Note:** While similar **radix64** is not the same as **base64**.
 
-With radix64 you can generate encoded strings of any length whereas base64 must always have encoded strings with a length that is a multiple of 4. Therefore radix64 doesn't need padding characters and can more efficiently represent the bits.
+**base64** is for converting binary data and so starts converting from the most significant byte to least.
+**radix64** is for converting integers from base 10 to base 64 and so starts converting with the least significant byte to most.
+
+With **radix64** you can generate encoded strings of any length whereas **base64** must always have encoded strings with a length that is a multiple of 4. Therefore **radix64** doesn't need padding characters and can more efficiently represent the bits.
 
 ### Example
 Decimal | Radix64 | Base64
@@ -88,7 +91,7 @@ var radix64 = require('radix-64')(alphabet);
 
 <br>
 # Performance
-Benchmarks on an Amazon EC2 micro-2 instance. Averages the run times of 1 million calls over 10 trials. Uses random pre-generated 64 bit buffers or 53 bit integers as inputs. You can see the radix64 functions performance for buffers are as fast if not faster than native node base64 conversion functions.
+Benchmarks on an Amazon EC2 micro-2 instance. The times are for 1 million calls averaged over 10 runs. Uses random pre-generated 64 bit buffers or 53 bit integers as inputs. You can see the radix64 functions performance for buffers are as fast as if not faster than native node base64 conversion functions.
 
 Function | Time (Milliseconds)
 --------------------------------|----
