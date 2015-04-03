@@ -1,6 +1,6 @@
 # Description
 ---
-Library to convert arbitrarily sized integers to and from any radix 64 alphabet. Designed for ID generation.
+Fast and efficient number conversion library for arbitrary radix 64 alphabets designed for ID generation.
 
 **Note:** radix64 is not the same as base64. Base64 is for converting binary data and so starts converting from the most significant byte to least. Whereas radix64 is for converting integers from base 10 to base 64 and so starts converting with the least significant byte to most.
 
@@ -31,22 +31,22 @@ Int | Radix64 | Base64
 var radix64 = require('radix-64')();
 ```
 
-####radix64.encodeBuffer(buffer[, length])
+#### radix64.encodeBuffer(buffer[, length])
 Encodes a buffer into a radix 64 string.
 * **buffer** - binary buffer
 * **length** [Optional] - Length of the desired encoded string. If not specified uses the minimum length needed to encode the buffer.
 
-####radix64.encodeInt(integer[, length])
+#### radix64.encodeInt(integer[, length])
 Encodes an integer into a radix 64 string.
 * **integer** - Javascript integer 
 * **length** [Optional] -  Length of the desired encoded string. If not specified uses the minimum length needed to encode the integer.
 
-####radix64.decodeToInt(string[, bytes])
+#### radix64.decodeToInt(string[, bytes])
 Decodes a radix 64 string to a buffer
 * **string** - radix 64 string
 * **bytes** [Optional] - Int of bytes of the desired decoded buffer. If not specified uses the minimum bytes needed to decode the string.
 
-####radix64.decodeToBuffer(string)
+#### radix64.decodeToBuffer(string)
 Decodes a radix 64 string to an integer
 * **string** - radix 64 string
 
@@ -85,3 +85,14 @@ var LEXICOGRAPHICAL_BASE64_URL =
     .split('').sort().join(''); // Ensure in sorted order
 var radix64 = require('radix-64')(alphabet);
 ```
+
+<br>
+# Performance
+Benchmarks on an Amazon EC2 micro-2 instance for 1,000,000 calls. Uses  1,000,000 random pre-generated 64 bit buffers or 53 bit integers.
+
+Function | Time (Milliseconds)
+---------|--------------------
+encodeBuffer  |209
+encodeInt     |1186
+decodeBuffer  |509
+decodeInt     |142

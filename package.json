@@ -6,7 +6,7 @@
   "scripts": {
     "test": "mocha test/*.js"
   },
-  "repository": "http://github.com/ajeun/radix64.git",
+  "repository": "http://github.com/amosyuen/radix64.git",
   "author": {
     "name": "Amos Yuen",
     "email": "",
