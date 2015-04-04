@@ -70,14 +70,19 @@ describe('encode / decode int', function () {
         oneLess = num - offset;
         offset *= 2;
       } while(oneLess === num);
+      var bounds = Math.pow(2, 6 * length);
 
       (function() {
         radix64.encodeInt(oneLess, length);
-      }).should.not.throw();
+      })
+      .should.not.throw();
 
       (function() {
         radix64.encodeInt(num, length);
-      }).should.throw(Error);
+      })
+      .should.throw(Error, {
+        message: 'Int (' + num + ') is greater than or equal to max bound (' + bounds + ') for encoded string length (' + length + ')'
+      });
     }
   });
 
@@ -123,18 +128,25 @@ describe('custom alphabet', function () {
   it('should throw error if incorrect size', function () {
     (function() {
       radix64Fn('abcd');
-    }).should.throw(Error);
+    })
+    .should.throw(Error, {
+      message: 'alphabet must be 64 characters long!',
+    });
   });
 
   it('should throw error if duplicate characters', function () {
     (function() {
       radix64Fn('abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz01');
-    }).should.throw(Error);
+    })
+    .should.throw(Error, {
+      message: 'alphabet has duplicate characters!',
+    });
   });
 
   it('should work with custom alphabet', function () {
     (function() {
       radix64Fn('abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ+/');
-    }).should.not.throw();
+    })
+    .should.not.throw();
   });
 });

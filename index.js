@@ -2,7 +2,6 @@
 
 var BASE = 64;
 var BASE_BITS = 6;
-var WORD_OFFSET = Math.pow(2, 32);
 
 // Use URL safe characters in lexicographically sorted order
 var LEXICOGRAPHICAL_BASE64_URL = '-0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxyz'
@@ -71,7 +70,7 @@ module.exports = function (alphabet) {
     if (length) {
       var bounds = Math.pow(2, 6 * length);
       if (num >= bounds) {
-        throw new Error('Int (' + num + ') is greater than or equal to max bound (' + bound + ') for encoded string length (' + length + ')');
+        throw new Error('Int (' + num + ') is greater than or equal to max bound (' + bounds + ') for encoded string length (' + length + ')');
       }
     } else {
       var log = Math.log2(num);
